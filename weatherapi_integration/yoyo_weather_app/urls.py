@@ -14,13 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(
-        r'^api/locations/(?P<pk>[0-9]+)/?days=(?P<jk>[0-9]+)$',
-        views.get_location_temperatures,
-        name='get_location_temperature'
-    )
+    path('api/locations/<str:location>/',
+         views.GetLocationTemperatures.as_view(), name='get_location_temps')
 ]
