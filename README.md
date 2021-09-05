@@ -7,7 +7,6 @@ This is the project structure:
 ├── README.md
 ├── requirements.txt
 └── weatherapi_integration
-    ├── db.sqlite3
     ├── manage.py
     ├── weatherapi_integration
     │   ├── asgi.py
