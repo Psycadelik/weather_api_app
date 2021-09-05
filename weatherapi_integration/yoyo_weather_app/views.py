@@ -13,7 +13,8 @@ class GetLocationTemperatures(APIView):
     def get(self, request, *args, **kwargs):
         # 1. fetch the city and number of days from the request params
         # 2. Validate the inputs
-        # 3. Call function to fetch location weather from weatherapi.com
+        # 3. Call function to fetch location weather data from
+        # https://weatherapi.com
         # 4. call functions to compute max,min,avg and median temps
         # 5. return response with given format structure
         # 6. create a browsable api that is accessible locally
@@ -25,8 +26,8 @@ class GetLocationTemperatures(APIView):
             if location == "":
                 response_object = {
                     "status": "error",
-                    "message": "please provide a location to fetch weather data "
-                               "for"
+                    "message": "please provide a location to fetch weather"
+                               " data for"
                 }
                 return Response(response_object,
                                 status=status.HTTP_401_UNAUTHORIZED)
@@ -67,5 +68,6 @@ class GetLocationTemperatures(APIView):
                 "status": "error",
                 "message": "an error occured: " + str(e)
             }
+
             return Response(response_object,
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR)
