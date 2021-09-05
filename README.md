@@ -31,10 +31,22 @@ This is the project structure:
 
 Local Setup:
 ```
+1. clone the project:
 - git clone git@github.com:Psycadelik/weather_api_app.git
+
+2. cd into the directory:
 - cd weather_api_app
+
+3. create a virtual environment:
 - python3 -m venv venv
+
+4.activate the virtual environment:
+- source venv/bin/activate
+
+5. install required dependecies:
 - pip install -r requirements.txt
+
+6. explore the app directory:
 - cd weatherapi_integration
 ```
 To run tests:
