@@ -125,4 +125,4 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # API key for weatherapi.com
-API_KEY = os.getenv('<your-api-key>', 'fc5acdf1e9d740718f591743210209')
+API_KEY = os.getenv('API_KEY', 'fc5acdf1e9d740718f591743210209')
