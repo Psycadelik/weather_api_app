@@ -23,7 +23,7 @@ class GetLocationTemperatures(APIView):
             location = kwargs.get('location')
 
             # validate the query params
-            if location == "":
+            if not location:
                 response_object = {
                     "status": "error",
                     "message": "please provide a location to fetch weather"
@@ -32,7 +32,7 @@ class GetLocationTemperatures(APIView):
                 return Response(response_object,
                                 status=status.HTTP_401_UNAUTHORIZED)
 
-            if days == "":
+            if not days:
                 response_object = {
                     "status": "error",
                     "message": "please provide number of days to get weather "
