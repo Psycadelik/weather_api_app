@@ -73,4 +73,3 @@ To test the API endpoint:
     "median": <some-value>
 }
 ```
-
