@@ -73,3 +73,4 @@ To test the API endpoint:
     "median": <some-value>
 }
 ```
+NB: note that the weatherapi.com api forecasts for a maximum of 3 days
