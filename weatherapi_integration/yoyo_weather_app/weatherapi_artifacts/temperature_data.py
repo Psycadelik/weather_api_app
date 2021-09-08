@@ -13,5 +13,5 @@ def average_temperature(temperatures):
     return statistics.mean(temperatures)
 
 
-def median_temperature(temperatures):
-    return statistics.median(temperatures)
+def median_temperature(temp1,temp2, temp3):
+    return statistics.median([temp1, temp2, temp3])
