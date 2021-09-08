@@ -22,6 +22,10 @@ class WeatherAppTest(TestCase):
         }
 
         self.test_data = [17.5, 28.0, 29, 33]
+        self.test_median_data = [34, 20, 19.4]
+        self.test_data_array = [11, 12.0]
+        self.merged_array = self.test_data + self.test_median_data +\
+                            self.test_data_array
 
         self.test_json_response = {
             "forecast": {
@@ -39,7 +43,7 @@ class WeatherAppTest(TestCase):
             }
         }
 
-        self.test_url = 'http://localhost:8000/api/locations/{}/?days={}'.\
+        self.test_url = 'http://localhost:8000/api/locations/{}/?days={}'. \
             format(self.request_params['location'], self.request_params['days']
                    )
 
@@ -68,7 +72,7 @@ class WeatherAppTest(TestCase):
     """ test that the median temperature function returns a value """
 
     def test_median_temperature_function(self):
-        assert median_temperature(self.test_data) == 28.5
+        assert median_temperature(self.merged_array) == 20
 
     """ test that the weather api returns correct data"""
 
