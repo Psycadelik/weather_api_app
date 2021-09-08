@@ -58,13 +58,14 @@ class GetLocationTemperatures(APIView):
                 min_temperatures.append(temp['day']['mintemp_c'])
                 avg_temperatures.append(temp['day']['avgtemp_c'])
 
+            merged_array = max_temperatures + min_temperatures + \
+                           avg_temperatures
+
             response_object = {
                 "maximum": maximum_temperature(max_temperatures),
                 "minimum": minimum_temperature(min_temperatures),
                 "average": average_temperature(avg_temperatures),
-                "median": median_temperature(max_temperatures,
-                                             min_temperatures,
-                                             avg_temperatures)
+                "median": median_temperature(merged_array)
             }
 
             return Response(response_object, status=status.HTTP_200_OK)
