@@ -45,20 +45,26 @@ class GetLocationTemperatures(APIView):
             # https://weatherapi.com
             weather_data = fetch_location_weather_data(location, days)
 
-            # create an empty array to store the temperatures
-            temperatures = []
+            # create empty arrays to store the temperatures
+            max_temperatures = []
+            min_temperatures = []
+            avg_temperatures = []
 
             # loop through the temperatures given in degrees celsius for the
             # location
             for temp in weather_data['forecast']['forecastday']:
                 # append the temperatures into the array
-                temperatures.append(temp['day']['maxtemp_c'])
+                max_temperatures.append(temp['day']['maxtemp_c'])
+                min_temperatures.append(temp['day']['mintemp_c'])
+                avg_temperatures.append(temp['day']['avgtemp_c'])
 
             response_object = {
-                "maximum": maximum_temperature(temperatures),
-                "minimum": minimum_temperature(temperatures),
-                "average": average_temperature(temperatures),
-                "median": median_temperature(temperatures)
+                "maximum": maximum_temperature(max_temperatures),
+                "minimum": minimum_temperature(min_temperatures),
+                "average": average_temperature(avg_temperatures),
+                "median": median_temperature(max_temperatures,
+                                             min_temperatures,
+                                             avg_temperatures)
             }
 
             return Response(response_object, status=status.HTTP_200_OK)
@@ -70,4 +76,4 @@ class GetLocationTemperatures(APIView):
             }
 
             return Response(response_object,
-                    status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
